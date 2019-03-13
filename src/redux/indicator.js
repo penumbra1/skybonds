@@ -8,9 +8,9 @@ export function setIndicator(indicator) {
 }
 
 export const indicators = {
-  PRICE: "PRICE",
-  YIELD: "YIELD",
-  SPREAD: "SPREAD"
+  PRICE: "price",
+  YIELD: "currentYield",
+  SPREAD: "spread"
 };
 
 export default function reducer(state = {}, action = {}) {
