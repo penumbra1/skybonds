@@ -1,7 +1,5 @@
 const getRandom = (from, to) => {
-  return (
-    Math.floor((Math.random() * (to - from) + Math.min(from, 0)) * 100) / 100
-  );
+  return Math.floor((Math.random() * (to - from) + from) * 100) / 100;
 };
 
 const getInitialData = () => {
@@ -12,14 +10,13 @@ const getInitialData = () => {
   };
 };
 
-const simulateChange = (n, delta) =>
-  getRandom(Math.floor(n - delta), Math.floor(n + delta));
+const simulateChange = (n, delta) => getRandom(n - delta, n + delta);
 
 const getNextData = ({ price, currentYield, spread }) => {
   return {
-    price: simulateChange(price, 5),
-    currentYield: simulateChange(currentYield, 1),
-    spread: simulateChange(spread, 2)
+    price: Math.max(0.1, simulateChange(price, 0.5)),
+    currentYield: simulateChange(currentYield, 0.25),
+    spread: simulateChange(spread, 0.25)
   };
 };
 
@@ -51,7 +48,7 @@ const generateResponse = isin => {
     issuer: "Some Company LLC.",
     rating: getRating(),
     coupon: 5.55,
-    data: generateDataPoints()
+    indicators: generateDataPoints()
   };
 };
 
