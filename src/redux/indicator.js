@@ -13,7 +13,7 @@ export const indicators = {
   SPREAD: "SPREAD"
 };
 
-export default function reducer(state, action) {
+export default function reducer(state = {}, action = {}) {
   switch (action.type) {
     case SET_INDICATOR:
       return { indicator: action.indicator };

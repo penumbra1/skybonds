@@ -4,7 +4,7 @@ export function setPeriod(period) {
   return { type: SET_PERIOD, period };
 }
 
-export const periodFilters = {
+export const periods = {
   WEEK: "WEEK",
   MONTH: "MONTH",
   QUARTER: "QUARTER",
@@ -12,11 +12,7 @@ export const periodFilters = {
   MAX: "MAX"
 };
 
-const initialState = {
-  period: periodFilters.WEEK
-};
-
-export default function reducer(state = initialState, action = {}) {
+export default function reducer(state = {}, action = {}) {
   switch (action.type) {
     case SET_PERIOD:
       return { period: action.period };
