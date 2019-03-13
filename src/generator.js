@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const getRandom = (from, to) => {
   return Math.floor((Math.random() * (to - from) + from) * 100) / 100;
 };
@@ -25,17 +27,16 @@ const getRating = () => {
   return letter.repeat(1 + Math.floor(Math.random() * 3));
 };
 
-const MAX_DAYS = 365;
 const generateDataPoints = () => {
   const dataPoints = [];
-  let date = new Date();
-  date.setDate(date.getDate() - MAX_DAYS + 1);
+  let date = moment().subtract(2, "y");
 
   let dailyData = getInitialData();
 
-  for (let i = 0; i < MAX_DAYS; i++, date.setDate(date.getDate() + 1)) {
-    dataPoints.push({ date: new Date(date), ...dailyData });
+  while (date.isSameOrBefore(moment.now(), "d")) {
+    dataPoints.push({ date: date.format(), ...dailyData });
     dailyData = getNextData(dailyData);
+    date.add(1, "d");
   }
 
   return dataPoints;
@@ -48,6 +49,7 @@ const generateResponse = isin => {
     issuer: "Some Company LLC.",
     rating: getRating(),
     coupon: 5.55,
+    maturity: moment().add(3, "y"),
     indicators: generateDataPoints()
   };
 };
