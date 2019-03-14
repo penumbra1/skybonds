@@ -49,7 +49,9 @@ const generateResponse = isin => {
     issuer: "Some Company LLC.",
     rating: getRating(),
     coupon: 5.55,
-    maturity: moment().add(3, "y"),
+    maturity: moment()
+      .add(3, "y")
+      .format(),
     indicators: generateDataPoints()
   };
 };

@@ -6,10 +6,7 @@ const Chart = ({ data, dataKey }) => (
   <LineChart width={600} height={300} data={data}>
     <Line type="natural" dataKey={dataKey} stroke="#0033ff" dot={false} />
     <CartesianGrid stroke="#ccc" />
-    <XAxis
-      dataKey="date"
-      tickFormatter={isoTime => moment(isoTime).format("DD.MM")}
-    />
+    <XAxis dataKey="date" tickFormatter={iso => moment(iso).format("DD.MM")} />
     <YAxis />
   </LineChart>
 );
