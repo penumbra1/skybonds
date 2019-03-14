@@ -5,10 +5,10 @@ import { indicators, setIndicator } from "../redux/indicator";
 
 const Option = Select.Option;
 
-const IndicatorSelect = ({ current, setIndicator }) => {
+const IndicatorSelect = ({ indicator, setIndicator }) => {
   return (
     <Select
-      defaultValue={current}
+      defaultValue={indicator}
       onChange={setIndicator}
       style={{ width: 120 }}
     >
@@ -20,7 +20,7 @@ const IndicatorSelect = ({ current, setIndicator }) => {
 };
 
 const mapStateToProps = ({ indicator }) => ({
-  current: indicator
+  indicator
 });
 const mapDispatchToProps = { setIndicator };
 

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Card } from "antd";
 import Chart from "./components/Chart";
 import Layout from "./components/Layout";
 import IndicatorSelect from "./components/IndicatorSelect";
