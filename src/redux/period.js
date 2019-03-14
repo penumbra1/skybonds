@@ -18,22 +18,23 @@ export function getPeriodInDays(state, untilDate) {
   let subtractArgs = [];
   switch (state) {
     case periods.WEEK:
-      subtractArgs = [1, "week"];
+      subtractArgs = [1, "weeks"];
       break;
     case periods.MONTH:
-      subtractArgs = [1, "month"];
+      subtractArgs = [1, "months"];
       break;
     case periods.QUARTER:
       subtractArgs = [3, "months"];
       break;
     case periods.YEAR:
-      subtractArgs = [1, "year"];
+      subtractArgs = [1, "years"];
       break;
     default:
       return state;
   }
-  const until = moment(untilDate);
-  const periodInDays = until.diff(until.subtract(...subtractArgs), "days");
+  const end = moment(untilDate);
+  const start = end.clone().subtract(...subtractArgs);
+  const periodInDays = end.diff(start, "days");
   return periodInDays;
 }
 
