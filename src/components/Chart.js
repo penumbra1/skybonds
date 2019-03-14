@@ -22,13 +22,13 @@ const getNameFromKey = key => {
 };
 
 const Chart = ({ data, dataKey }) => (
-  <LineChart width={600} height={300} data={data}>
+  <LineChart width={600} height={300} data={data} key={dataKey}>
     <Line
       type="natural"
       dataKey={dataKey}
       stroke="#0033ff"
       dot={false}
-      animationDuration={800}
+      animationDuration={900}
       name={getNameFromKey(dataKey)}
     />
     <CartesianGrid stroke="#ccc" />
