@@ -12,13 +12,17 @@ const getInitialData = () => {
   };
 };
 
-const simulateChange = (n, delta) => getRandom(n - delta, n + delta);
+const simulateChange = (n, delta) =>
+  getRandom(
+    Math.floor(n - Math.abs(n * delta)),
+    Math.ceil(n + Math.abs(n * delta))
+  );
 
 const getNextData = ({ price, currentYield, spread }) => {
   return {
-    price: Math.max(0.1, simulateChange(price, 0.5)),
-    currentYield: simulateChange(currentYield, 0.25),
-    spread: simulateChange(spread, 0.25)
+    price: Math.max(0.1, simulateChange(price, 0.2)),
+    currentYield: simulateChange(currentYield, 0.2),
+    spread: simulateChange(spread, 0.2)
   };
 };
 
