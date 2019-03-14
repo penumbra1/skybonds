@@ -9,6 +9,7 @@ import {
   YAxis,
   Tooltip
 } from "recharts";
+import { getDataForPeriod } from "../redux";
 import { indicators } from "../redux/indicator";
 
 const tickFormatter = iso => moment(iso).format("DD.MM");
@@ -38,7 +39,7 @@ const Chart = ({ data, dataKey }) => (
 );
 
 const mapStateToProps = state => ({
-  data: state.data.indicators,
+  data: getDataForPeriod(state),
   dataKey: state.indicator
 });
 

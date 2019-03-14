@@ -12,12 +12,6 @@ export const periods = {
   MAX: "MAX"
 };
 
-export function getDataForPeriod(state) {
-  // slice data based on current period
-  // switch state.period, slice from (now - period) to now
-  return state;
-}
-
 export default function reducer(state = periods.WEEK, action = {}) {
   switch (action.type) {
     case SET_PERIOD:

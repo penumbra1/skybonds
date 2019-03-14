@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import generateResponse from "./generator";
 import { indicators } from "./redux/indicator";
 import { periods } from "./redux/period";
-import rootReducer from "./redux/rootReducer";
+import rootReducer from "./redux";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
