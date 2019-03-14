@@ -13,10 +13,10 @@ export const indicators = {
   SPREAD: "spread"
 };
 
-export default function reducer(state = {}, action = {}) {
+export default function reducer(state = indicators.PRICE, action = {}) {
   switch (action.type) {
     case SET_INDICATOR:
-      return { indicator: action.indicator };
+      return action.indicator;
     default:
       return state;
   }
