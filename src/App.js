@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import "./App.css";
+import { Card } from "antd";
 import Chart from "./components/Chart";
-import Summary from "./components/Summary";
+import Layout from "./components/Layout";
 import IndicatorSelect from "./components/IndicatorSelect";
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Summary />
+      <Layout>
         <Chart />
         <IndicatorSelect />
-      </div>
+      </Layout>
     );
   }
 }
