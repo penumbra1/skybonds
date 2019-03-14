@@ -52,7 +52,7 @@ const generateResponse = isin => {
     maturity: moment()
       .add(3, "y")
       .format(),
-    indicators: generateDataPoints()
+    dataPoints: generateDataPoints()
   };
 };
 
