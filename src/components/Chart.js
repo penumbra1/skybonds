@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import moment from "moment";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 
@@ -11,4 +12,9 @@ const Chart = ({ data, dataKey }) => (
   </LineChart>
 );
 
-export default Chart;
+const mapStateToProps = state => ({
+  data: state.data.indicators,
+  dataKey: state.indicator
+});
+
+export default connect(mapStateToProps)(Chart);

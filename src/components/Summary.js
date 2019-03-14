@@ -7,7 +7,7 @@ const Summary = ({ name, issuer, coupon, maturity }) => (
     <h1>{name}</h1>
     <p>{coupon}</p>
     <p>{issuer}</p>
-    <p>{moment(maturity).format("DD.MM.YY")}</p>
+    <p>{maturity}</p>
   </>
 );
 
@@ -15,7 +15,7 @@ const mapStateToProps = ({ data: { name, issuer, coupon, maturity } }) => ({
   name,
   issuer,
   coupon,
-  maturity
+  maturity: moment(maturity).format("DD.MM.YY")
 });
 
 export default connect(mapStateToProps)(Summary);

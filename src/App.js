@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
-import ChartContainer from "./containers/ChartContainer";
-import Summary from "./containers/Summary";
+import Chart from "./components/Chart";
+import Summary from "./components/Summary";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Summary />
-        <ChartContainer />
+        <Chart />
       </div>
     );
   }
