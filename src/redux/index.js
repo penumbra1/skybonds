@@ -16,6 +16,7 @@ const periodSelector = state => state.period;
 export const getDataForPeriod = createSelector(
   [dataPointsSelector, periodSelector],
   (dataPoints, period) => {
+    if (!dataPoints.length) return [];
     const untilDate = dataPoints[dataPoints.length - 1].date;
     const periodInDays = getPeriodInDays(period, untilDate);
     return dataPoints.slice(-periodInDays);

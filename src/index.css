@@ -1,5 +1,6 @@
 :root {
   --blue: #0033ff;
+  --baseWidth: 550px;
 }
 
 body {
@@ -12,11 +13,42 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App {
+.container {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.block {
+  width: 550px;
+  max-width: 95vw;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 576px) {
+  .meta {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+}
+
+.mv16 {
+  margin-top: 16px;
+  margin-bottom: 16px;
 }

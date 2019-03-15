@@ -10,7 +10,8 @@ const IndicatorSelect = ({ indicator, setIndicator }) => {
     <Select
       defaultValue={indicator}
       onChange={setIndicator}
-      style={{ width: 120 }}
+      className="mv16"
+      style={{ width: 100 }}
     >
       <Option value={indicators.PRICE}>Price</Option>
       <Option value={indicators.YIELD}>Yield</Option>
