@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "antd": "^3.15.0",
-    "babel-plugin-import": "^1.11.0",
     "customize-cra": "^0.2.12",
     "moment": "^2.24.0",
     "react": "^16.8.4",
@@ -19,9 +18,10 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "react-app-rewired build --stats",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "analyze": "npx webpack-bundle-analyzer ./build/bundle-stats.json"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,5 +31,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "babel-plugin-import": "^1.11.0",
+    "babel-plugin-recharts": "^1.2.0"
+  }
 }
