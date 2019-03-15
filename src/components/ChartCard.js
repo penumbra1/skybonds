@@ -1,48 +1,56 @@
 import React from "react";
-import { connect } from "react-redux";
 import moment from "moment";
 import { Card, Typography, Statistic, Row, Col } from "antd";
 
 const { Meta } = Card;
+const SecondaryText = ({ children }) => (
+  <Typography.Paragraph
+    ellipsis
+    type="secondary"
+    style={{ margin: 0, fontSize: "14px" }}
+  >
+    {children}
+  </Typography.Paragraph>
+);
 
-const ChartCard = ({ name, issuer, coupon, maturity, children }) => (
+const ChartCard = ({
+  name,
+  issuer,
+  isin,
+  currency,
+  coupon,
+  maturity,
+  children
+}) => (
   <Card
     title={
-      <Row gutter={16} align="center" type="flex">
-        <Col span={12}>
-          <Meta
-            title={name.toUpperCase()}
-            description={
-              <Typography.Paragraph ellipsis style={{ margin: 0 }}>
-                {issuer}
-              </Typography.Paragraph>
-            }
-            style={{ margin: 0 }}
-          />
+      <Row gutter={16} align="top" type="flex">
+        <Col span={24} sm={12} className="meta">
+          <div>
+            <Meta title={name.toUpperCase()} />
+            <SecondaryText>{issuer}</SecondaryText>
+          </div>
+          <SecondaryText>{isin}</SecondaryText>
         </Col>
-        <Col span={6}>
+        <Col xs={{ span: 6, push: 6 }} sm={{ span: 4, push: 0 }}>
           <Statistic title="Coupon" value={coupon} precision={2} suffix="%" />
         </Col>
-        <Col span={6}>
+        <Col xs={{ span: 6, push: 6 }} sm={{ span: 4, push: 0 }}>
           <Statistic
             title="Maturity"
             value={moment(maturity).format("YYYY")}
             groupSeparator=""
           />
         </Col>
+        <Col xs={{ span: 6, push: 6 }} sm={{ span: 4, push: 0 }}>
+          <Statistic title="Currency" value={currency} />
+        </Col>
       </Row>
     }
-    style={{ maxWidth: "95vw" }}
+    className="block mv16"
   >
     {children}
   </Card>
 );
 
-const mapStateToProps = ({ data: { name, issuer, coupon, maturity } }) => ({
-  name,
-  issuer,
-  coupon,
-  maturity
-});
-
-export default connect(mapStateToProps)(ChartCard);
+export default ChartCard;
