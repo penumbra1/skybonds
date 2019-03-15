@@ -13,16 +13,13 @@ const getInitialData = () => {
 };
 
 const simulateChange = (n, delta) =>
-  getRandom(
-    Math.floor(n - Math.abs(n * delta)),
-    Math.ceil(n + Math.abs(n * delta))
-  );
+  getRandom(Math.floor(n - delta), Math.ceil(n + delta));
 
 const getNextData = ({ price, currentYield, spread }) => {
   return {
-    price: Math.max(0.1, simulateChange(price, 0.2)),
-    currentYield: simulateChange(currentYield, 0.2),
-    spread: simulateChange(spread, 0.2)
+    price: Math.max(0.1, simulateChange(price, 1)),
+    currentYield: simulateChange(currentYield, 0.5),
+    spread: simulateChange(spread, 0.5)
   };
 };
 
@@ -49,8 +46,9 @@ const generateDataPoints = () => {
 const generateResponse = isin => {
   return {
     isin,
-    name: "Some Company",
+    name: "SOMECOMP",
     issuer: "Some Company LLC.",
+    currency: "USD",
     rating: getRating(),
     coupon: 5.55,
     maturity: moment()
@@ -59,7 +57,5 @@ const generateResponse = isin => {
     dataPoints: generateDataPoints()
   };
 };
-
-// console.log(JSON.stringify(generateResponse("YYY"), null, 2));
 
 export default generateResponse;
