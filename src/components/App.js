@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import IsinInput from "./components/ISINInput";
-import Chart from "./components/Chart";
-import ChartCard from "./components/ChartCard";
-import IndicatorSelect from "./components/IndicatorSelect";
-import PeriodSelect from "./components/PeriodSelect";
-import { fetchData } from "./redux/data";
+import IsinInput from "./ISINInput";
+import Chart from "./Chart";
+import ChartCard from "./ChartCard";
+import IndicatorSelect from "./IndicatorSelect";
+import PeriodSelect from "./PeriodSelect";
+import { fetchData } from "../redux/data";
 
 class App extends Component {
   componentDidMount() {
     this.props.fetchData(this.props.isin);
   }
 
-  componentDidUpdate() {
-    this.props.fetchData(this.props.isin);
+  componentDidUpdate({ isin }) {
+    if (isin !== this.props.isin) {
+      this.props.fetchData(this.props.isin);
+    }
   }
 
   render() {
@@ -34,7 +36,6 @@ class App extends Component {
 
 const mapStateToProps = ({ data: { isin, dataPoints, ...meta } }) => ({
   isin,
-  hasData: dataPoints.length > 0,
   ...meta
 });
 
