@@ -7,12 +7,14 @@ const Search = Input.Search;
 
 const IsinInput = ({ isin, setIsin }) => {
   return (
-    <Search
-      addonBefore="ISIN"
-      defaultValue={isin}
-      onSearch={setIsin}
-      className="block"
-    />
+    <div className="block mv16">
+      <Search
+        addonBefore="ISIN"
+        defaultValue={isin}
+        onSearch={setIsin}
+        maxLength={12}
+      />
+    </div>
   );
 };
 

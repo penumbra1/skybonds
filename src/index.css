@@ -15,7 +15,8 @@ body {
 
 .container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 16px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,18 +35,18 @@ body {
   margin-bottom: 16px;
 }
 
-.controls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
 @media (min-width: 576px) {
   .meta {
     flex-direction: column;
     margin-bottom: 0;
   }
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .mv16 {
