@@ -1,22 +1,48 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Input } from "antd";
+import { Input, Tooltip } from "antd";
 import { setIsin } from "../redux/data";
 
 const Search = Input.Search;
 
-const IsinInput = ({ isin, setIsin }) => {
-  return (
-    <div className="block mv16">
-      <Search
-        addonBefore="ISIN"
-        defaultValue={isin}
-        onSearch={setIsin}
-        maxLength={12}
-      />
-    </div>
-  );
-};
+class IsinInput extends Component {
+  state = {
+    showMessage: false
+  };
+
+  onSearch = value => {
+    if (!value.match(/[a-zA-z0-9]{12}/)) {
+      this.setState({
+        showMessage: true
+      });
+    } else {
+      this.props.setIsin(value);
+      this.setState({
+        showMessage: false
+      });
+    }
+  };
+
+  render() {
+    return (
+      <div className="block mv16">
+        <Tooltip
+          trigger={["focus"]}
+          title={"Please enter a 12-character alphanumeric code"}
+          placement="topLeft"
+          visible={this.state.showMessage}
+        >
+          <Search
+            addonBefore="ISIN"
+            defaultValue={this.props.isin}
+            onSearch={this.onSearch}
+            maxLength={12}
+          />
+        </Tooltip>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   isin: state.data.isin
